@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaisukh Bangalore Krishne Gowda | Data Analytics Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --accent-light: #f472b6;
+            --success: #10b981;
+            --info: #0ea5e9;
+            --warning: #f59e0b;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
+            --bg-light: #ffffff;
+            --bg-surface: #f8fafc;
+            --bg-gradient-1: #f0f9ff;
+            --bg-gradient-2: #faf5ff;
+            --bg-gradient-3: #fdf4ff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-3) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.2rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header-location {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-light) 100%);
+            border: 2px solid var(--border);
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .contact-links a:hover {
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+        }
+
+        .contact-links a:hover::before {
+            left: 0;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 6rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 10px;
+        }
+
+        /* About section */
+        .about-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-radius: 24px;
+            padding: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 10px 40px -10px rgba(99, 102, 241, 0.1),
+                0 0 0 1px rgba(99, 102, 241, 0.1);
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-content:hover::before {
+            opacity: 1;
+        }
+
+        .about-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 60px -10px rgba(99, 102, 241, 0.25),
+                0 0 0 1px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Education cards */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .edu-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border-left: 6px solid var(--accent);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.08;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .edu-card:hover {
+            border-left-color: var(--primary);
+            transform: translateX(12px) translateY(-5px);
+            box-shadow: 
+                0 20px 60px -10px rgba(99, 102, 241, 0.25),
+                -5px 0 30px -10px rgba(236, 72, 153, 0.2);
+        }
+
+        .edu-card:hover::before {
+            transform: scale(1.5);
+            opacity: 0.12;
+        }
+
+        .edu-card h3 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .edu-card p {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-meta {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+
+        .edu-meta span {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-gradient-1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        /* Projects */
+        .project-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--info) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 70px -15px rgba(99, 102, 241, 0.3),
+                0 0 0 1px rgba(99, 102, 241, 0.1);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.1;
+            top: -20%;
+            right: -20%;
+        }
+
+        .project-card h3 {
+            font-size: 1.7rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--info) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .project-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: white;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px -3px rgba(236, 72, 153, 0.4);
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .project-card li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .project-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 0 5px 5px 0;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 70px -15px rgba(99, 102, 241, 0.3),
+                0 0 0 1px rgba(99, 102, 241, 0.1);
+        }
+
+        .experience-item:hover::after {
+            height: 100%;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .exp-title h3 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .exp-company {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .exp-meta {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .exp-meta div:first-child {
+            color: var(--text-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-meta div:last-child {
+            color: white;
+            background: linear-gradient(135deg, var(--success) 0%, var(--info) 100%);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.4);
+        }
+
+        .experience-item ul {
+            list-style: none;
+        }
+
+        .experience-item li {
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .experience-item li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 80px -20px rgba(99, 102, 241, 0.35),
+                0 0 0 1px rgba(99, 102, 241, 0.15);
+        }
+
+        .skill-category:hover::before {
+            opacity: 0.08;
+            top: -20%;
+            left: -20%;
+        }
+
+        .skill-category h3 {
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 3px solid transparent;
+            background-image: 
+                linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%),
+                linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            background-clip: text, border-box;
+            background-origin: padding-box, border-box;
+            font-weight: 700;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.7rem 0 0.7rem 2rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-dark);
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--accent);
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-category li:hover {
+            background: var(--bg-gradient-1);
+            color: var(--primary);
+            transform: translateX(8px);
+        }
+
+        .skill-category li:hover::before {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-top: 2px solid var(--border);
+            padding: 3rem 0;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-links {
+                justify-content: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-header {
+                flex-direction: column;
+            }
+
+            .exp-meta {
+                text-align: left;
+            }
+
+            .exp-meta div:last-child {
+                display: inline-block;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .header-content {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .contact-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .contact-links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <div class="header-name">Jaisukh Bangalore Krishne Gowda</div>
+                <div class="header-location">📍 Boston, MA, USA | +1 (732) 439-3336</div>
+            </div>
+            <nav class="contact-links">
+                <a href="mailto:bangalorekrishnego.j@northeastern.edu">📧 Email</a>
+                <a href="https://www.linkedin.com/in/jaisukh-bk/" target="_blank">💼 LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Senior Business Analytics Professional</h1>
+            <p class="subtitle">Enterprise Data Pipelines & System Integrations in Pharmaceutical Manufacturing</p>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                Senior Business Analytics Professional with 6+ years building enterprise data pipelines and system integrations in pharmaceutical manufacturing environments. Expert in integrating biotech systems (MES, LIMS, DCS/SCADA, ERP) with cloud data platforms, ensuring GxP and FDA 21 CFR Part 11 compliance. Proven track record designing scalable data solutions using Python, SQL & cloud technologies (GCP) while implementing data governance frameworks for regulated industries. Currently advancing AI/ML capabilities through Master's in Business Analytics at Northeastern University.
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3>Master's in Business Analytics</h3>
+                    <p>Northeastern University</p>
+                    <div class="edu-meta">
+                        <span>📍 Massachusetts, USA</span>
+                        <span>📅 2025 – 2026</span>
+                        <span>📊 GPA: 3.44</span>
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <h3>Bachelor of Technology</h3>
+                    <p>Electrical & Electronics Engineering</p>
+                    <p>Ramaiah University</p>
+                    <div class="edu-meta">
+                        <span>📍 Karnataka, India</span>
+                        <span>📅 2015 – 2019</span>
+                        <span>📊 GPA: 3.3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-card">
+                <h3>Agentic AI Sales Intelligence Platform</h3>
+                <p class="project-date">January 2026</p>
+                <ul>
+                    <li>Developed AI-powered data pipeline processing customer reviews, meeting transcripts & sales data using Python, SQL & LLM integration for automated market analysis</li>
+                    <li>Implemented vector embedding and semantic search for customer touchpoint optimization & market-basket analysis using modern AI technologies</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <h3>Predictive Analytics for Digital Soil Mapping</h3>
+                <p class="project-date">November 2025</p>
+                <ul>
+                    <li>Built machine learning pipeline using Decision Tree algorithms and advanced analytics for sustainable resource planning across agriculture and industrial development domains</li>
+                    <li>Processed and modeled geospatial datasets for predictive insights supporting industrial planning and environmental conservation initiatives</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Senior Business Analyst</h3>
+                        <p class="exp-company">Dr. Reddy's Laboratories Ltd</p>
+                    </div>
+                    <div class="exp-meta">
+                        <div>Hyderabad, India</div>
+                        <div>Feb 2022 – Sep 2025</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Implemented data lineage tracking & governance frameworks using automated metadata management, ensuring end-to-end data observability from source systems such as MES, ERP, L2 & LIMS through analytics layer for regulatory compliance & audit readiness</li>
+                    <li>Architected scalable data pipelines on GCP cloud platform, implementing data modeling best practices, performance optimization & cost-efficient resource usage to reduce query costs by 32% while supporting 500+ business users</li>
+                    <li>Built & maintained production data pipelines using modern frameworks including workflow orchestration tools, implementing Continuous Integration and Continuous Delivery practices, automated testing & comprehensive documentation for data quality and observability monitoring</li>
+                    <li>Pioneered Review-by-Exception framework leveraging real-time streaming data & AI-powered analytics to automate quality release processes for complex injectable & OSD SKUs, driving 27% production efficiency increase & earning Global Young Leader award for Industry 4.0 digital transformation initiatives in FY24</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Validation Engineer</h3>
+                        <p class="exp-company">Sarla Advantech Pvt Ltd</p>
+                    </div>
+                    <div class="exp-meta">
+                        <div>Mumbai, India</div>
+                        <div>Nov 2020 – Feb 2022</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Built real-time data pipelines integrating MES with IPQC laboratory instruments using IIoT technology & REST APIs, enabling automated exception handling & improving production efficiency by 31% through MSI Adapter & custom integration framework</li>
+                    <li>Implemented end-to-end data solutions for GxP-compliant pharmaceutical manufacturing, including workflow automation (PAS-X), data validation & integration testing across multiple clients (Cipla, Biocon, USV) meeting FDA 21 CFR Part 11 requirements</li>
+                    <li>Designed data quality frameworks & validation deliverables ensuring data integrity, traceability & compliance for USFDA-approved manufacturing facilities</li>
+                    <li>Developed integrated data solutions across OSD & Injectable manufacturing sites, implementing paperless batch manufacturing systems & root cause analysis capabilities for investigations & CAPA management</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">
+                        <h3>Trainee Executive MES</h3>
+                        <p class="exp-company">Strides Pharma Science Ltd</p>
+                    </div>
+                    <div class="exp-meta">
+                        <div>Bengaluru, India</div>
+                        <div>Jul 2019 – Nov 2020</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>Implemented ISA-88 & ISA-95 compliant automation framework for seamless data flow between manufacturing execution systems and enterprise business systems, maximizing batch production throughput</li>
+                    <li>Designed & deployed MES data pipelines integrating Syncade/PAS-X with L2 systems via DeltaV DCS Historian, enabling real-time manufacturing data capture & analysis</li>
+                    <li>Built custom data transmission solutions using TCP/IP networking & Kepware OPC for equipment monitoring system (EMS) integration with DCS, ensuring reliable data flow from shop floor to enterprise systems</li>
+                    <li>Created master batch record (MBR) data models & provided production support for data quality issues across manufacturing operations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Cloud & Data Platforms</h3>
+                    <ul>
+                        <li>GCP (BigQuery, Cloud Storage, Dataflow)</li>
+                        <li>Workflow Automation</li>
+                        <li>Python, SQL, REST APIs</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI/ML & Data Engineering</h3>
+                    <ul>
+                        <li>Kubernetes & Containerization</li>
+                        <li>LLMs & Vector Databases</li>
+                        <li>Machine Learning Pipelines</li>
+                        <li>Real-time Streaming & Batch Processing</li>
+                        <li>DevOps & CI/CD (Git)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Manufacturing Systems</h3>
+                    <ul>
+                        <li>MES (PAS-X, Syncade)</li>
+                        <li>SAP S4 HANA Integration</li>
+                        <li>Aveva PI Historian, LIMS, IPQC</li>
+                        <li>IIoT & OPC Communication</li>
+                        <li>ISA-88, ISA-95, Industry 4.0</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Governance</h3>
+                    <ul>
+                        <li>Data Quality & Observability</li>
+                        <li>Data Lineage & Metadata Management</li>
+                        <li>GxP & FDA 21 CFR Part 11</li>
+                        <li>GAMP 5, EMA Guidelines</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Analytics & BI</h3>
+                    <ul>
+                        <li>Tableau, PowerBI</li>
+                        <li>Alteryx, Looker Studio</li>
+                        <li>Python (Jupyter, Spyder)</li>
+                        <li>R, SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>R</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Jaisukh Bangalore Krishne Gowda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
